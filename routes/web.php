@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //return Str::of('hello world')->upper()->append(' and everyone else');
     return view('welcome');
+})->name('home');
+
+Route::get('/endpoint', function () {
+    return to_route('home');
+    //return redirect()->route('home');
 });
 
 Route::controller(\App\Http\Controllers\PostsController::class)->group(function () {
