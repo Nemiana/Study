@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
+    throw new \Exception('Whooops');
     //return Str::of('hello world')->upper()->append(' and everyone else');
     return view('welcome');
 })->name('home');
