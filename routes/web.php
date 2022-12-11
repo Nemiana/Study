@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -36,4 +38,6 @@ Route::controller(\App\Http\Controllers\PostsController::class)->group(function 
     Route::post('/posts', 'store');
 });
 
-
+Route::get('/users/{user}/posts/{post}', function (User $user, Post $post) {
+    return $post;
+})->scopeBindings();
