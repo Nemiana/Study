@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
@@ -15,9 +16,13 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
-    throw new \Exception('Whooops');
+    return Blade::render('{{ $greeting }}, @if (false) World @else Folks @endif', ['greeting' => 'Hello']);
+
+    //throw new \Exception('Whooops');
+
     //return Str::of('hello world')->upper()->append(' and everyone else');
-    return view('welcome');
+
+    //return view('welcome');
 })->name('home');
 
 Route::get('/endpoint', function () {
